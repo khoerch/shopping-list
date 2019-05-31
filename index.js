@@ -26,15 +26,15 @@ function newItem() {
 
 function checkItem() {
     $('.shopping-list').on('click', '.shopping-item-toggle', function(event) {
-        // This part is tripping me up. Is closest the right way to go?
-        const checkedItem = $(this).closest('li').find('span');
-        checkedItem.toggleClass('.shopping-item_checked');
+        // Not sure what the most efficient way to assign this variable is, but it worked
+        const checkedItem = $(this).closest('li').find('.shopping-item');
+        checkedItem.toggleClass('shopping-item__checked');
     });
 };
 
 function deleteItem() {
     $('.shopping-list').on('click', '.shopping-item-delete', function(event) {
-        //I based this off one of the examples. When is this in $() and when is it not?
+        //I based this off one of the examples. When is 'this' in $() and when is it not?
         $(this).closest('li').remove();
     });
 };
