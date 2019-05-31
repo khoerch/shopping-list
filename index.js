@@ -12,23 +12,31 @@ function newItem() {
         $('.shopping-list').append(`<li>
             <span class="shopping-item">${listItem}</span>
             <div class="shopping-item-controls">
-            <button class="shopping-item-toggle">
-                <span class="button-label">check</span>
-            </button>
-            <button class="shopping-item-delete">
-                <span class="button-label">delete</span>
-            </button>
+                <button class="shopping-item-toggle">
+                    <span class="button-label">check</span>
+                </button>
+                <button class="shopping-item-delete">
+                    <span class="button-label">delete</span>
+                </button>
             </div>
         </li>`);
+        $('input').val('');
     });
 };
 
 function checkItem() {
-
+    $('.shopping-list').on('click', '.shopping-item-toggle', function(event) {
+        // This part is tripping me up. Is closest the right way to go?
+        const checkedItem = $(this).closest('li').find('span');
+        checkedItem.toggleClass('.shopping-item_checked');
+    });
 };
 
 function deleteItem() {
-
+    $('.shopping-list').on('click', '.shopping-item-delete', function(event) {
+        //I based this off one of the examples. When is this in $() and when is it not?
+        $(this).closest('li').remove();
+    });
 };
 
 $(newItem);
